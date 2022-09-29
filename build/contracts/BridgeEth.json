@@ -1,0 +1,564 @@
+{
+  "contractName": "BridgeEth",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "date",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        },
+        {
+          "indexed": true,
+          "internalType": "enum BridgeBase.Step",
+          "name": "step",
+          "type": "uint8"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "processedNonces",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "token",
+      "outputs": [
+        {
+          "internalType": "contract IToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.4+commit.1dca32f3\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"token\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"},{\"indexed\":true,\"internalType\":\"enum BridgeBase.Step\",\"name\":\"step\",\"type\":\"uint8\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"processedNonces\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract IToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BridgeEth.sol\":\"BridgeEth\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/BridgeBase.sol\":{\"keccak256\":\"0xb0aadbcbd05fbdd94d0d90de29042528c1b6116704c1313cd2b0889b5efe5118\",\"urls\":[\"bzz-raw://42f7c71273b82a86105c3128f712e5a3f100d99d883b2549ce706d6498f4e2f0\",\"dweb:/ipfs/Qmb2dY91oKCcLsQs2S5W3bkUCNujjjXkTQ74d2NmMameay\"]},\"project:/contracts/BridgeEth.sol\":{\"keccak256\":\"0x65a24bb5604d1026e496200655b2a55d1d28deca49e26a9f13ac223fccc1c6f7\",\"urls\":[\"bzz-raw://83def20622137635104448b5001753221c2dae324cd8a59daca8dce6d564d872\",\"dweb:/ipfs/QmZkjMs76uRk62LGoZdACqEZ7rVStqUrhpmncSfHUJEbdQ\"]},\"project:/contracts/IToken.sol\":{\"keccak256\":\"0x1aa74afde95f3fa0352f9482f8f731884241f7222fa24a1c827619e78f939102\",\"urls\":[\"bzz-raw://6a2719e6a6d51daa0ccbaa1b10ed7b8c4378eb8cac29f51c870515d8bc68829d\",\"dweb:/ipfs/QmYCfAiXyn3v2teVDTXk5SJJj8id51QqrwyYvVwPprX9bX\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161099b38038061099b8339818101604052602081101561003357600080fd5b810190808051906020019092919050505080336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050506108c4806100d76000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c8063525557021461005c5780637cc70240146101295780638a94b05f1461018f578063f851a4401461023c578063fc0c546a14610286575b600080fd5b610127600480360360a081101561007257600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001906401000000008111156100e357600080fd5b8201836020820111156100f557600080fd5b8035906020019184600183028401116401000000008311171561011757600080fd5b90919293919293905050506102d0565b005b6101756004803603604081101561013f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919050505061059b565b604051808215151515815260200191505060405180910390f35b61023a600480360360808110156101a557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001906401000000008111156101f657600080fd5b82018360208201111561020857600080fd5b8035906020019184600183028401116401000000008311171561022a57600080fd5b90919293919293905050506105ca565b005b6102446107eb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61028e610810565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600061037787878787604051602001808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b81526014018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b815260140183815260200182815260200194505050505060405160208183030381529060405280519060200120610836565b90506001600260008973ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600086815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166340c10f1987876040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050600060405180830381600087803b15801561048b57600080fd5b505af115801561049f573d6000803e3d6000fd5b505050506001808111156104af57fe5b7fce5a9b86edd3b998c3948a7934c7ecf7dba73c4c5bcf56cf576bca4aa2beeb3088888842898989604051808873ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001868152602001858152602001848152602001806020018281038252848482818152602001925080828437600081840152601f19601f8201169050808301925050509850505050505050505060405180910390a250505050505050565b60026020528160005260406000206020528060005260406000206000915091509054906101000a900460ff1681565b6001600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600085815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639dc29fac33866040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050600060405180830381600087803b1580156106dc57600080fd5b505af11580156106f0573d6000803e3d6000fd5b505050506000600181111561070157fe5b7fce5a9b86edd3b998c3948a7934c7ecf7dba73c4c5bcf56cf576bca4aa2beeb3033878742888888604051808873ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001868152602001858152602001848152602001806020018281038252848482818152602001925080828437600081840152601f19601f8201169050808301925050509850505050505050505060405180910390a25050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008160405160200180807f19457468657265756d205369676e6564204d6573736167653a0a333200000000815250601c0182815260200191505060405160208183030381529060405280519060200120905091905056fea26469706673582212209fdb4b74cdeb68f648e3b56e08d5df19dea5513d65b03e344d68f0d59fce2e8664736f6c63430006040033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c8063525557021461005c5780637cc70240146101295780638a94b05f1461018f578063f851a4401461023c578063fc0c546a14610286575b600080fd5b610127600480360360a081101561007257600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001906401000000008111156100e357600080fd5b8201836020820111156100f557600080fd5b8035906020019184600183028401116401000000008311171561011757600080fd5b90919293919293905050506102d0565b005b6101756004803603604081101561013f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919050505061059b565b604051808215151515815260200191505060405180910390f35b61023a600480360360808110156101a557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291908035906020019092919080359060200190929190803590602001906401000000008111156101f657600080fd5b82018360208201111561020857600080fd5b8035906020019184600183028401116401000000008311171561022a57600080fd5b90919293919293905050506105ca565b005b6102446107eb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61028e610810565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b600061037787878787604051602001808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b81526014018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b815260140183815260200182815260200194505050505060405160208183030381529060405280519060200120610836565b90506001600260008973ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600086815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166340c10f1987876040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050600060405180830381600087803b15801561048b57600080fd5b505af115801561049f573d6000803e3d6000fd5b505050506001808111156104af57fe5b7fce5a9b86edd3b998c3948a7934c7ecf7dba73c4c5bcf56cf576bca4aa2beeb3088888842898989604051808873ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001868152602001858152602001848152602001806020018281038252848482818152602001925080828437600081840152601f19601f8201169050808301925050509850505050505050505060405180910390a250505050505050565b60026020528160005260406000206020528060005260406000206000915091509054906101000a900460ff1681565b6001600260003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600085815260200190815260200160002060006101000a81548160ff021916908315150217905550600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16639dc29fac33866040518363ffffffff1660e01b8152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050600060405180830381600087803b1580156106dc57600080fd5b505af11580156106f0573d6000803e3d6000fd5b505050506000600181111561070157fe5b7fce5a9b86edd3b998c3948a7934c7ecf7dba73c4c5bcf56cf576bca4aa2beeb3033878742888888604051808873ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001868152602001858152602001848152602001806020018281038252848482818152602001925080828437600081840152601f19601f8201169050808301925050509850505050505050505060405180910390a25050505050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60008160405160200180807f19457468657265756d205369676e6564204d6573736167653a0a333200000000815250601c0182815260200191505060405160208183030381529060405280519060200120905091905056fea26469706673582212209fdb4b74cdeb68f648e3b56e08d5df19dea5513d65b03e344d68f0d59fce2e8664736f6c63430006040033",
+  "sourceMap": "128:93:3:-:0;;;165:54;5:9:-1;2:2;;;27:1;24;17:12;2:2;165:54:3;;;;;;;;;;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;165:54:3;;;;;;;;;;;;;;;;203:5;548:10:1;540:5;;:18;;;;;;;;;;;;;;;;;;579:6;564:5;;:22;;;;;;;;;;;;;;;;;;499:97;165:54:3;128:93;;;;;;",
+  "deployedSourceMap": "128:93:3:-:0;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;128:93:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;12:1:-1;9;2:12;1005:612:1;;;;;;15:3:-1;10;7:12;4:2;;;32:1;29;22:12;4:2;1005:612:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;27:11:-1;14;11:28;8:2;;;52:1;49;42:12;8:2;1005:612:1;;41:9:-1;34:4;18:14;14:25;11:40;8:2;;;64:1;61;54:12;8:2;1005:612:1;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1005:612:1;;;;;;;;;;;;:::i;:::-;;254:64;;;;;;15:2:-1;10:3;7:11;4:2;;;31:1;28;21:12;4:2;254:64:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;600:401;;;;;;15:3:-1;10;7:12;4:2;;;32:1;29;22:12;4:2;600:401:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;27:11:-1;14;11:28;8:2;;;52:1;49;42:12;8:2;600:401:1;;41:9:-1;34:4;18:14;14:25;11:40;8:2;;;64:1;61;54:12;8:2;600:401:1;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;600:401:1;;;;;;;;;;;;:::i;:::-;;207:20;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;231:19;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1005:612;1138:15;1156:94;1199:4;1212:2;1223:6;1237:5;1175:73;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1175:73:1;;;1165:84;;;;;;1156:8;:94::i;:::-;1138:112;;1449:4;1418:15;:21;1434:4;1418:21;;;;;;;;;;;;;;;:28;1440:5;1418:28;;;;;;;;;;;;:35;;;;;;;;;;;;;;;;;;1459:5;;;;;;;;;;;:10;;;1470:2;1474:6;1459:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;1459:22:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1459:22:1;;;;1597:9;1492:120;;;;;;;;;1508:4;1520:2;1530:6;1544:15;1567:5;1580:9;;1492:120;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1492:120:1;;;;;;;;;;;;;;;;;;;1005:612;;;;;;;:::o;254:64::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;600:401::-;819:4;782:15;:27;798:10;782:27;;;;;;;;;;;;;;;:34;810:5;782:34;;;;;;;;;;;;:41;;;;;;;;;;;;;;;;;;829:5;;;;;;;;;;;:10;;;840;852:6;829:30;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5:9:-1;2:2;;;27:1;24;17:12;2:2;829:30:1;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;829:30:1;;;;981:9;870:126;;;;;;;;;886:10;904:2;914:6;928:15;951:5;964:9;;870:126;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;870:126:1;;;;;;;;;;;;;;;;;;;600:401;;;;;:::o;207:20::-;;;;;;;;;;;;;:::o;231:19::-;;;;;;;;;;;;;:::o;1621:170::-;1676:7;1775:4;1708:77;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1708:77:1;;;1698:88;;;;;;1691:95;;1621:170;;;:::o",
+  "source": "// SPDX-License-Identifier: UNLICENSED\n\n//pragma solidity >=0.4.22 <0.9.0;\npragma solidity ^0.6.4;\n\nimport './BridgeBase.sol';\n\ncontract BridgeEth is BridgeBase {\n  constructor(address token) BridgeBase(token) public {}\n}\n",
+  "sourcePath": "/home/usuario/Escritorio/csd-bridge/contracts/BridgeEth.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/BridgeEth.sol",
+    "exportedSymbols": {
+      "BridgeEth": [
+        1445
+      ]
+    },
+    "id": 1446,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1432,
+        "literals": [
+          "solidity",
+          "^",
+          "0.6",
+          ".4"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "75:23:3"
+      },
+      {
+        "absolutePath": "project:/contracts/BridgeBase.sol",
+        "file": "./BridgeBase.sol",
+        "id": 1433,
+        "nodeType": "ImportDirective",
+        "scope": 1446,
+        "sourceUnit": 1416,
+        "src": "100:26:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1434,
+              "name": "BridgeBase",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1415,
+              "src": "150:10:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_BridgeBase_$1415",
+                "typeString": "contract BridgeBase"
+              }
+            },
+            "id": 1435,
+            "nodeType": "InheritanceSpecifier",
+            "src": "150:10:3"
+          }
+        ],
+        "contractDependencies": [
+          1415
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1445,
+        "linearizedBaseContracts": [
+          1445,
+          1415
+        ],
+        "name": "BridgeEth",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1443,
+              "nodeType": "Block",
+              "src": "217:2:3",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 1444,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 1440,
+                    "name": "token",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 1437,
+                    "src": "203:5:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 1441,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1439,
+                  "name": "BridgeBase",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1415,
+                  "src": "192:10:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_BridgeBase_$1415_$",
+                    "typeString": "type(contract BridgeBase)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "192:17:3"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 1438,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1437,
+                  "name": "token",
+                  "nodeType": "VariableDeclaration",
+                  "overrides": null,
+                  "scope": 1444,
+                  "src": "177:13:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1436,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "177:7:3",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "176:15:3"
+            },
+            "returnParameters": {
+              "id": 1442,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "217:0:3"
+            },
+            "scope": 1445,
+            "src": "165:54:3",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1446,
+        "src": "128:93:3"
+      }
+    ],
+    "src": "75:147:3"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/BridgeEth.sol",
+      "exportedSymbols": {
+        "BridgeEth": [
+          1445
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.6",
+            ".4"
+          ]
+        },
+        "id": 1432,
+        "name": "PragmaDirective",
+        "src": "75:23:3"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1416,
+          "absolutePath": "project:/contracts/BridgeBase.sol",
+          "file": "./BridgeBase.sol",
+          "scope": 1446,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1433,
+        "name": "ImportDirective",
+        "src": "100:26:3"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            1415
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            1445,
+            1415
+          ],
+          "name": "BridgeEth",
+          "scope": 1446
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "BridgeBase",
+                  "referencedDeclaration": 1415,
+                  "type": "contract BridgeBase"
+                },
+                "id": 1434,
+                "name": "UserDefinedTypeName",
+                "src": "150:10:3"
+              }
+            ],
+            "id": 1435,
+            "name": "InheritanceSpecifier",
+            "src": "150:10:3"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "name": "",
+              "overrides": null,
+              "scope": 1445,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "token",
+                      "overrides": null,
+                      "scope": 1444,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1436,
+                        "name": "ElementaryTypeName",
+                        "src": "177:7:3"
+                      }
+                    ],
+                    "id": 1437,
+                    "name": "VariableDeclaration",
+                    "src": "177:13:3"
+                  }
+                ],
+                "id": 1438,
+                "name": "ParameterList",
+                "src": "176:15:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1442,
+                "name": "ParameterList",
+                "src": "217:0:3"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 1415,
+                      "type": "type(contract BridgeBase)",
+                      "value": "BridgeBase"
+                    },
+                    "id": 1439,
+                    "name": "Identifier",
+                    "src": "192:10:3"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 1437,
+                      "type": "address",
+                      "value": "token"
+                    },
+                    "id": 1440,
+                    "name": "Identifier",
+                    "src": "203:5:3"
+                  }
+                ],
+                "id": 1441,
+                "name": "ModifierInvocation",
+                "src": "192:17:3"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1443,
+                "name": "Block",
+                "src": "217:2:3"
+              }
+            ],
+            "id": 1444,
+            "name": "FunctionDefinition",
+            "src": "165:54:3"
+          }
+        ],
+        "id": 1445,
+        "name": "ContractDefinition",
+        "src": "128:93:3"
+      }
+    ],
+    "id": 1446,
+    "name": "SourceUnit",
+    "src": "75:147:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.4+commit.1dca32f3.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2022-05-15T15:29:10.968Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
